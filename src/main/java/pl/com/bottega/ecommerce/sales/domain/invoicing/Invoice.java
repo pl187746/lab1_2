@@ -30,6 +30,10 @@ public class Invoice  {
 	public static Invoice createInvoice(Id invoiceId, ClientData client) {
 		return new Invoice(invoiceId, client);
 	}
+	
+	public static Invoice createInvoice(ClientData client) {
+		return createInvoice(Id.generate(), client);
+	}
 
 	private ClientData client;
 
