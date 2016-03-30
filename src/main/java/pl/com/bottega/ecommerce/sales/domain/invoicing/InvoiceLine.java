@@ -19,39 +19,38 @@
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductData;
+import pl.com.bottega.ecommerce.sales.domain.purchase.Item;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class InvoiceLine {
 
-	private ProductData product;
-
-	private int quantity;
-
-	private Money net;
+	private Item item;
 
 	private Money gros;
 
 	private Tax tax;
 
-	InvoiceLine(ProductData product, int quantity, Money net, Tax tax) {
-		this.product = product;
-		this.quantity = quantity;
-		this.net = net;
+	InvoiceLine(Item item, Tax tax) {
+		this.item = item;
 		this.tax = tax;
 
-		this.gros = net.add(tax.getAmount());
+		this.gros = item.getTotalCost().add(tax.getAmount());
+	}
+	
+	public Item getItem() {
+		return item;
 	}
 
 	public ProductData getProduct() {
-		return product;
+		return item.getProductData();
 	}
 
 	public int getQuantity() {
-		return quantity;
+		return item.getQuantity();
 	}
 
 	public Money getNet() {
-		return net;
+		return item.getTotalCost();
 	}
 
 	public Money getGros() {

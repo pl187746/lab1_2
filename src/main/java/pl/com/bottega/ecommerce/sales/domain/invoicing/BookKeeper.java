@@ -35,10 +35,8 @@ public class BookKeeper {
 		Invoice invoice = Invoice.createInvoice(invoiceRequest.getClient());
 
 		for (Item item : invoiceRequest.getItems()) {
-			Money net = item.getTotalCost();
-			Tax tax = taxFactory.createTax(net, item.getProductData().getType());
-			InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(),
-					item.getQuantity(), net, tax);
+			Tax tax = taxFactory.createTax(item.getTotalCost(), item.getProductData().getType());
+			InvoiceLine invoiceLine = new InvoiceLine(item, tax);
 			invoice.addItem(invoiceLine);
 		}
 
