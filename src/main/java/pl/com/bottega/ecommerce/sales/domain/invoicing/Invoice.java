@@ -27,6 +27,10 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 public class Invoice  {
 
 
+	public static Invoice createInvoice(Id invoiceId, ClientData client) {
+		return new Invoice(invoiceId, client);
+	}
+
 	private ClientData client;
 
 
@@ -39,7 +43,7 @@ public class Invoice  {
 
 	private Id id;
 
-	Invoice(Id invoiceId, ClientData client) {
+	private Invoice(Id invoiceId, ClientData client) {
 		this.id = invoiceId;
 		this.client = client;
 		this.items = new ArrayList<InvoiceLine>();
