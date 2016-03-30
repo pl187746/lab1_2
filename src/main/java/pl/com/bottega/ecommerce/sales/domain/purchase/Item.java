@@ -19,7 +19,7 @@ import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductData;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 
-public class PurchaseItem {
+public class Item {
 	
 
 	private ProductData productData;
@@ -30,9 +30,9 @@ public class PurchaseItem {
 	private Money totalCost;
 	
 	@SuppressWarnings("unused")
-	private PurchaseItem() {}
+	private Item() {}
 	
-	public PurchaseItem(ProductData productData, int quantity, Money totalCost) {
+	public Item(ProductData productData, int quantity, Money totalCost) {
 		this.productData = productData;
 		this.quantity = quantity;
 		this.totalCost = totalCost;

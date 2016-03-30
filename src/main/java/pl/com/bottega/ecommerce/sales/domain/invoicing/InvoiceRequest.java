@@ -6,16 +6,17 @@ import java.util.Collections;
 import java.util.List;
 
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
+import pl.com.bottega.ecommerce.sales.domain.purchase.Item;
 
 public class InvoiceRequest {
 	private ClientData client;	
-	private List<RequestItem> items = new ArrayList<RequestItem>();
+	private List<Item> items = new ArrayList<Item>();
 	
 	public InvoiceRequest(ClientData client){
 		this.client = client;
 	}
 	
-	public void add(RequestItem item){
+	public void add(Item item){
 		items.add(item);
 	}
 	
@@ -23,7 +24,7 @@ public class InvoiceRequest {
 		return client;
 	}
 	
-	public Collection<RequestItem> getItems() {
+	public Collection<Item> getItems() {
 		return Collections.unmodifiableCollection(items);
 	}
 

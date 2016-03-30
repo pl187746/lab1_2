@@ -26,7 +26,7 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Purchase {
 
-	private List<PurchaseItem> items;
+	private List<Item> items;
 
 	private boolean paid;
 
@@ -43,7 +43,7 @@ public class Purchase {
 	}
 
 	Purchase(Id aggregateId, ClientData clientData,
-			List<PurchaseItem> items, Date purchaseDate, boolean paid,
+			List<Item> items, Date purchaseDate, boolean paid,
 			Money totalCost) {
 		this.aggregateId = aggregateId;
 		this.clientData = clientData;
@@ -73,8 +73,8 @@ public class Purchase {
 		return clientData;
 	}
 
-	public Collection<PurchaseItem> getItems() {
-		return (Collection<PurchaseItem>) Collections
+	public Collection<Item> getItems() {
+		return (Collection<Item>) Collections
 				.unmodifiableCollection(items);
 	}
 

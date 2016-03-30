@@ -21,6 +21,7 @@ import java.util.List;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
+import pl.com.bottega.ecommerce.sales.domain.purchase.Item;
 
 public class BookKeeper {
 	
@@ -33,7 +34,7 @@ public class BookKeeper {
 	public Invoice issuance(InvoiceRequest invoiceRequest) {
 		Invoice invoice = Invoice.createInvoice(invoiceRequest.getClient());
 
-		for (RequestItem item : invoiceRequest.getItems()) {
+		for (Item item : invoiceRequest.getItems()) {
 			Money net = item.getTotalCost();
 			Tax tax = taxFactory.createTax(net, item.getProductData().getType());
 			InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(),
