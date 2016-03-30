@@ -24,6 +24,10 @@ public class Payment {
 	public static Payment createPayment(Id aggregateId, ClientData clientData, Money amount) {
 		return new Payment(aggregateId, clientData, amount);
 	}
+	
+	public static Payment createPayment(ClientData clientData, Money amount) {
+		return createPayment(Id.generate(), clientData, amount);
+	}
 
 	private ClientData clientData;
 
